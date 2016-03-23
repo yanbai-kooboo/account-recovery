@@ -1,0 +1,96 @@
+.modal-backdrop.in {
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+
+.modal-dialog {
+    width: 320px;
+}
+
+.modal-title {
+    color: #fff;
+}
+
+.modal .modal-footer {
+    text-align:left;
+}
+
+.modal .modal-footer a:hover,
+.modal .modal-footer a:visited,
+.modal .modal-footer a {
+    color: #9298a6;
+    text-decoration:none;
+}
+
+.modal .login-button {
+    margin-top: 60px;
+    padding: 0 43px;
+    line-height: 30px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    width: 100%;
+}
+
+.modal .login-button:hover {
+    background-color: #32af3d;
+    color: #fff;
+}
+
+.modal .modal-content {
+    border-radius: 0px;
+    width: 320px;
+    background-color: #1e2738;
+}
+
+.modal .modal-body:after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.modal .modal-header {
+    border-bottom: none;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.modal .modal-body {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    font-size: 12px;
+    color: #686f82;
+}
+
+.modal .modal-body p {
+    line-height: 2;
+    font-weight: bold;
+}
+
+.modal .modal-footer {
+    padding-left: 30px;
+    font-size: 12px;
+    background-color: #293243;
+    color: #686f82;
+    border-top: none;
+    font-weight: bold;
+}
+
+.modal .modal-footer span {
+    display: block;
+}
+
+.modal-header .close {
+    color: #717885;
+    text-shadow: none;
+    opacity: 1;
+    float: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

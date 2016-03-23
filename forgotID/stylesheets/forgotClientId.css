@@ -1,0 +1,111 @@
+/* line 1, ../sass/forgotClientId.scss */
+.modal-backdrop.in {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+/* line 6, ../sass/forgotClientId.scss */
+.modal-dialog {
+  width: 320px;
+}
+
+/* line 10, ../sass/forgotClientId.scss */
+.modal-title {
+  color: #fff;
+}
+
+/* line 14, ../sass/forgotClientId.scss */
+.modal .modal-footer {
+  text-align: left;
+}
+
+/* line 18, ../sass/forgotClientId.scss */
+.modal .modal-footer a:hover,
+.modal .modal-footer a:visited,
+.modal .modal-footer a {
+  color: #9298a6;
+  text-decoration: none;
+}
+
+/* line 25, ../sass/forgotClientId.scss */
+.modal .login-button {
+  margin-top: 60px;
+  padding: 0 43px;
+  line-height: 30px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  width: 100%;
+}
+
+/* line 38, ../sass/forgotClientId.scss */
+.modal .login-button:hover {
+  background-color: #32af3d;
+  color: #fff;
+}
+
+/* line 43, ../sass/forgotClientId.scss */
+.modal .modal-content {
+  border-radius: 0px;
+  width: 320px;
+  background-color: #1e2738;
+}
+
+/* line 49, ../sass/forgotClientId.scss */
+.modal .modal-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+/* line 55, ../sass/forgotClientId.scss */
+.modal .modal-header {
+  border-bottom: none;
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+/* line 62, ../sass/forgotClientId.scss */
+.modal .modal-body {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  font-size: 12px;
+  color: #686f82;
+}
+
+/* line 70, ../sass/forgotClientId.scss */
+.modal .modal-body p {
+  line-height: 2;
+  font-weight: bold;
+}
+
+/* line 75, ../sass/forgotClientId.scss */
+.modal .modal-footer {
+  padding-left: 30px;
+  font-size: 12px;
+  background-color: #293243;
+  color: #686f82;
+  border-top: none;
+  font-weight: bold;
+}
+
+/* line 84, ../sass/forgotClientId.scss */
+.modal .modal-footer span {
+  display: block;
+}
+
+/* line 88, ../sass/forgotClientId.scss */
+.modal-header .close {
+  color: #717885;
+  text-shadow: none;
+  opacity: 1;
+  float: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
