@@ -1,0 +1,10 @@
+/* line 1, ../sass/hosting-page-layout.scss */
+.modal-backdrop.in {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+/* line 6, ../sass/hosting-page-layout.scss */
+.modal-dialog {
+  width: 320px;
+}

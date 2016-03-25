@@ -4,27 +4,16 @@ body {
 }
 
 /* line 5, ../sass/forgotClientId.scss */
-.modal-backdrop.in {
-  opacity: 0.9;
-  filter: alpha(opacity=90);
-}
-
-/* line 10, ../sass/forgotClientId.scss */
-.modal-dialog {
-  width: 320px;
-}
-
-/* line 14, ../sass/forgotClientId.scss */
 .modal-title {
   color: #fff;
 }
 
-/* line 18, ../sass/forgotClientId.scss */
+/* line 9, ../sass/forgotClientId.scss */
 .modal-footer {
   text-align: left;
 }
 
-/* line 22, ../sass/forgotClientId.scss */
+/* line 13, ../sass/forgotClientId.scss */
 .modal-footer a:hover,
 .modal-footer a:visited,
 .modal-footer a {
@@ -32,7 +21,7 @@ body {
   text-decoration: none;
 }
 
-/* line 29, ../sass/forgotClientId.scss */
+/* line 20, ../sass/forgotClientId.scss */
 .login-button {
   margin-top: 60px;
   padding: 0 43px;
@@ -46,27 +35,27 @@ body {
   width: 100%;
 }
 
-/* line 42, ../sass/forgotClientId.scss */
+/* line 33, ../sass/forgotClientId.scss */
 .login-button:hover {
   background-color: #32af3d;
   color: #fff;
 }
 
-/* line 47, ../sass/forgotClientId.scss */
+/* line 38, ../sass/forgotClientId.scss */
 .modal-content {
   border-radius: 0px;
   width: 320px;
   background-color: #1e2738;
 }
 
-/* line 53, ../sass/forgotClientId.scss */
+/* line 44, ../sass/forgotClientId.scss */
 .modal-body:after {
   display: table;
   clear: both;
   content: "";
 }
 
-/* line 59, ../sass/forgotClientId.scss */
+/* line 50, ../sass/forgotClientId.scss */
 .modal-header {
   border-bottom: none;
   padding-left: 30px;
@@ -74,7 +63,7 @@ body {
   padding-bottom: 10px;
 }
 
-/* line 66, ../sass/forgotClientId.scss */
+/* line 57, ../sass/forgotClientId.scss */
 .modal-body {
   padding-left: 30px;
   padding-right: 30px;
@@ -83,13 +72,13 @@ body {
   color: #686f82;
 }
 
-/* line 74, ../sass/forgotClientId.scss */
+/* line 65, ../sass/forgotClientId.scss */
 .modal-body p {
   line-height: 2;
   font-weight: bold;
 }
 
-/* line 79, ../sass/forgotClientId.scss */
+/* line 70, ../sass/forgotClientId.scss */
 .modal-footer {
   padding-left: 30px;
   font-size: 12px;
@@ -99,12 +88,12 @@ body {
   font-weight: bold;
 }
 
-/* line 88, ../sass/forgotClientId.scss */
+/* line 79, ../sass/forgotClientId.scss */
 .modal-footer span {
   display: block;
 }
 
-/* line 92, ../sass/forgotClientId.scss */
+/* line 83, ../sass/forgotClientId.scss */
 .modal-header .close {
   color: #717885;
   text-shadow: none;
