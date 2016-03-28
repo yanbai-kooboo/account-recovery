@@ -1,27 +1,65 @@
-<link rel="stylesheet" href="stylesheets/bootstrap_v3.3.6.css">
-<link rel="stylesheet" href="stylesheets/forgotClientId.css">
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Retrieve Client ID</h4>
-    </div>
-    <div class="modal-body">
-        <div class="form-group">
-            <label for="">Email address</label>
-            <input type="text" class="form-control">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="stylesheets/bootstrap_v3.3.6.css">
+    <link rel="stylesheet" href="stylesheets/forgotClientId.css">
+</head>
+
+<body>
+    <div id="forgotClientIdPopup" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="loading">loading...</div>
+            </div>
         </div>
-        <button type="button" class="btn btn-info btn-lg btn-block">Continue</button>
-        <a href="" class="help-block">Please enter your registered email address below.</a>
     </div>
-    <div class="modal-footer">
-        For further assistance, please contact<a href="">Customer Services.</a>
-    </div>
-</div>
-<script>
-    var rect = document.querySelector('.modal-content').getBoundingClientRect();
-    var ob = {
-        w:rect.width,
-        h:rect.height
-    }
-    parent.postMessage(ob, "http://hostingpage.com/");
-</script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+    <script>
+    // var rect = document.querySelector('.modal-content').getBoundingClientRect();
+    // var ob = {
+    //     key: "changeSize",
+    //     value: {
+    //         w: rect.width,
+    //         h: rect.height
+    //     }
+    // }
+    // parent.postMessage(ob, "http://hostingpage.com/");
+    (function() {
+        setTimeout(function() {
+            fnLoadPage("http://forgotclientid.pinnacle.com/retrieveClientId.html")
+        }, 2000)
+
+        function fnLoadPage(pageURL) {
+            $(".modal-content").load(pageURL, function() {
+                $(".loading").remove();
+            });
+        }
+
+        $("#forgotClientIdPopup").modal();
+
+        var fnInjectOverriddenStyleSheet = function(style_href, cb) {
+            var css_file = document.createElement('link'),
+                head = document.head;
+            css_file.onload = cb;
+            css_file.setAttribute('rel', 'stylesheet');
+            css_file.href = style_href;
+            head.appendChild(css_file);
+        }
+
+        window.onmessage = function(e) {
+            e = e || event;
+            if (e.data.key == 'injectOverriddenStyleSheet') {
+                if (e.data.value) {
+                    fnInjectOverriddenStyleSheet(e.data.value);
+                }
+            }
+        }
+    })()
+    </script>
+</body>
+
+</html>

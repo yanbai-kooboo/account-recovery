@@ -1,64 +1,84 @@
-var forgotClientId = {
-
-    injectStyle: function(style_href) {
-        var css_file = document.createElement('link'),
-            head = document.head;
-        css_file.setAttribute('rel', 'stylesheet');
-        css_file.href = style_href;
-        //todo if the css aready exsists, don't append
-        //todo onload and domready
-        head.appendChild(css_file);
-    },
-
-    injectJavascript: function(js_src, cb) {
-        var js_file = document.createElement('script'),
-            head = document.head;
-
-        js_file.onload = cb;
-        js_file.src = js_src;
-        //todo if the js_file aready exsists, don't append
-        //todo onload and domready
-        head.appendChild(js_file);
-    },
-
-    injectHtml: function(str_html) {
-        $('body').append(str_html);
-    },
-
-    template: function() {
-        return `
-        <div id="forgotClientIdPopup" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <iframe id="forgotClientIdIframe" scrolling="no" frameBorder="no" src="http://forgotclientid.pinnacle.com/forgotIDContent.html"></iframe>
-            </div>
-        </div>`
-    },
-
-    popup: function() {
-        $('#forgotClientIdPopup').modal();
+(function() {
+    var config = {
+        overriddenStyleUrl: "http://hostingpage.com/overidden-client-id-style.css",
+        homePageUrl: "http://forgotclientid.pinnacle.com/forgotIDContent.html",
+        hashTag: "#clientId"
     }
-}
 
-forgotClientId.injectStyle('http://forgotclientid.pinnacle.com/stylesheets/bootstrap_v3.3.6.css');
-forgotClientId.injectStyle('http://forgotclientid.pinnacle.com/stylesheets/forgotClientId.css');
+    function fnSetIframePosition() {
+        document.getElementById("forgotClientIdIframe").style.position = "absolute";
+        document.getElementById("forgotClientIdIframe").style.left = "0px";
+        document.getElementById("forgotClientIdIframe").style.top = "0px";
+    }
 
-forgotClientId.injectJavascript('http://forgotclientid.pinnacle.com/javascripts/jquery.js', function() {
-    console.log("js loaded");
-    forgotClientId.injectHtml(forgotClientId.template);
-    forgotClientId.injectJavascript('http://forgotclientid.pinnacle.com/javascripts/bootstrap.min.js', function() {
+    function fnSetIframeSize() {
+        document.getElementById("forgotClientIdIframe").style.width = document.body.clientWidth + 'px';
+        document.getElementById("forgotClientIdIframe").style.height = document.body.clientHeight + 'px';
+    }
 
-    })
-})
+    function fnIsValidStyleSheetAddress(styleHref) {
+        return /^http(s)?/.test(styleHref);
+    }
 
-window.onmessage = function(e) {
-    e = e || event;
-    console.log(e.data);
-    setIframeSize(e.data);
-}
+    function fnPostOverriddenStyleAddressMessage(styleHref, iframe) {
+        if (fnIsValidStyleSheetAddress(styleHref)) {
+            iframe.onload = function() {
+                iframe.contentWindow.postMessage({
+                    "key": "injectOverriddenStyleSheet",
+                    "value": styleHref
+                }, config.homePageUrl)
+            }
+        }
+    }
 
-window.forgotClientIdPopup = forgotClientId.popup;
+    function fnInitial() {
+        fnMonitorHash();
+    }
 
-function setIframeSize(ob) {
-    document.getElementById("forgotClientIdIframe").style.width = ob.w+"px";
-    document.getElementById("forgotClientIdIframe").style.height = ob.h+"px";
-}
+    function fnMonitorHash() {
+        if (location.hash === config.hashTag) {
+            window.forgotClientIdPopup();
+        }
+    }
+
+    window.onresize = function() {
+        fnSetIframeSize();
+    }
+
+    window.onmessage = function(e) {
+        e = e || event;
+        if (e.data === 'closePopup') {
+            document.getElementById("forgotClientIdIframe").parentNode.removeChild(document.getElementById("forgotClientIdIframe"));
+            window.location.hash = '';
+        }
+    }
+
+    window.onhashchange = function() {
+        fnMonitorHash();
+    }
+
+    var forgotClientId = {
+        injectHtml: function(domNode) {
+            document.body.appendChild(domNode);
+            fnSetIframePosition();
+            fnSetIframeSize();
+        },
+
+        template: function() {
+            var iframe = document.createElement("iframe");
+            iframe.id = 'forgotClientIdIframe';
+            iframe.setAttribute("scrolling", "no");
+            iframe.setAttribute("frameBorder", "no");
+            iframe.src = config.homePageUrl + "?referDomain=" + location.href;
+            fnPostOverriddenStyleAddressMessage(config.overriddenStyleUrl, iframe);
+            return iframe;
+        },
+
+        popup: function() {
+            forgotClientId.injectHtml(forgotClientId.template());
+        }
+    }
+
+    window.forgotClientIdPopup = forgotClientId.popup;
+    fnInitial();
+})();
