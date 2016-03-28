@@ -4,17 +4,22 @@ body {
 
 .modal-title {
     color: #fff;
+    font-weight: 700;
 }
 
 .modal-footer {
     text-align:left;
 }
 
+.modal-body a:hover,
+.modal-body a:visited,
+.modal-body a,
 .modal-footer a:hover,
 .modal-footer a:visited,
 .modal-footer a {
+    display: block;
     color: #9298a6;
-    text-decoration:none;
+    text-decoration: underline;
 }
 
 .login-button {
@@ -50,26 +55,26 @@ body {
 .modal-header {
     border-bottom: none;
     padding-left: 30px;
-    padding-top: 30px;
-    padding-bottom: 10px;
+    padding-top: 46px;
+    padding-bottom: 5px;
 }
 
 .modal-body {
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 30px;
-    font-size: 12px;
+    font-size: 13px;
     color: #686f82;
+    font-weight: 700;
 }
 
 .modal-body p {
     line-height: 2;
-    font-weight: bold;
 }
 
 .modal-footer {
     padding-left: 30px;
-    font-size: 12px;
+    font-size: 13px;
     background-color: #293243;
     color: #686f82;
     border-top: none;
@@ -86,6 +91,54 @@ body {
     opacity: 1;
     float: none;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 7px;
+    top: 3px;
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 40px;
+    background-color: #0b1423;
+    border-color: #3d4657;
+    border-radius: 0;
+}
+
+.form-control:focus {
+    border-color: #677081;
+    box-shadow: none;
+}
+
+.form-control.validation{
+    border-color: #af2727;
+}
+
+.modal-body .btn {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #2fa73b;
+    border-radius: 0;
+    border-color: #2fa73b;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.modal-body .btn:hover,
+.modal-body .btn:focus {
+    background-color: #2fa73b;
+}
+
+.modal-body .help-block {
+    margin-top: -2px;
+    margin-bottom: 19px;
+    line-height: 23px;
+    color: #686f82;
+}
+
+.modal-body a {
+    margin-top: 16px; 
 }
