@@ -47,7 +47,7 @@
 
     window.onmessage = function(e) {
         e = e || event;
-        if (e.data === 'closePopup') {
+        if (e.data.key === 'closePopup') {
             document.getElementById("forgotClientIdIframe").parentNode.removeChild(document.getElementById("forgotClientIdIframe"));
             window.location.hash = '';
         }

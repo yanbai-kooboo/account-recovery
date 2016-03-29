@@ -28,37 +28,56 @@
     //     }
     // }
     // parent.postMessage(ob, "http://hostingpage.com/");
-    (function() {
-        setTimeout(function() {
-            fnLoadPage("http://forgotclientid.pinnacle.com/retrieveClientId.html")
-        }, 2000)
 
-        function fnLoadPage(pageURL) {
-            $(".modal-content").load(pageURL, function() {
-                $(".loading").remove();
+    (function ($, window) {
+        var config = {
+            forgotClientIdPage: "http://forgotclientid.pinnacle.com/retrieveClientId.html",
+            // checkYourEmailPage: "@Url.FrontUrl().PageUrl("check-your-email")",
+            referDomain: "http://hostingpage.com/"
+        }
+
+        function fnLoadPage(pageUrl) {
+            $(".modal-content").html("");
+            $(".loading").show();
+            $(".modal-content").load(pageUrl + "?referDomain=" + config.referDomain, function () {
+                $(".loading").hide();
             });
         }
 
-        $("#forgotClientIdPopup").modal();
-
-        var fnInjectOverriddenStyleSheet = function(style_href, cb) {
-            var css_file = document.createElement('link'),
-                head = document.head;
-            css_file.onload = cb;
-            css_file.setAttribute('rel', 'stylesheet');
-            css_file.href = style_href;
-            head.appendChild(css_file);
+        function fnLoadCheckEmailPage() {
+            fnLoadPage(config.checkYourEmailPage);
+        }
+        function fnClosePopup() {
+            $("#forgotClientIdPopup").modal("hide");
         }
 
-        window.onmessage = function(e) {
+        var fnInjectOverriddenStyleSheet = function (styleHref) {
+            var cssFile = document.createElement("link"),
+                head = document.head;
+            cssFile.setAttribute("rel", "stylesheet");
+            cssFile.href = styleHref;
+            head.appendChild(cssFile);
+        }
+
+        window.onmessage = function (e) {
             e = e || event;
-            if (e.data.key == 'injectOverriddenStyleSheet') {
+            if (e.data.key === "injectOverriddenStyleSheet") {
                 if (e.data.value) {
                     fnInjectOverriddenStyleSheet(e.data.value);
                 }
             }
         }
-    })()
+
+        window.loadCheckEmailPage = fnLoadCheckEmailPage;
+        window.closePopup = fnClosePopup;
+
+        fnLoadPage(config.forgotClientIdPage);
+        $("#forgotClientIdPopup").modal();
+
+        $("#forgotClientIdPopup").on("hide.bs.modal", function (e) {
+            parent.postMessage({ "key": "closePopup" }, config.referDomain);
+        })
+    })($, window);
     </script>
 </body>
 
