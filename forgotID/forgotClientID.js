@@ -2,18 +2,20 @@
     var config = {
         overriddenStyleUrl: "http://hostingpage.com/overidden-client-id-style.css",
         homePageUrl: "http://forgotclientid.pinnacle.com/forgotIDContent.html",
-        hashTag: "#clientId"
+        hashTag: "#clientId",
+        iframeId: "forgotClientIdIframe",
+        userAgent:"desktop"
     }
 
     function fnSetIframePosition() {
-        document.getElementById("forgotClientIdIframe").style.position = "absolute";
-        document.getElementById("forgotClientIdIframe").style.left = "0px";
-        document.getElementById("forgotClientIdIframe").style.top = "0px";
+        document.getElementById(config.iframeId).style.position = "absolute";
+        document.getElementById(config.iframeId).style.left = "0px";
+        document.getElementById(config.iframeId).style.top = "0px";
     }
 
     function fnSetIframeSize() {
-        document.getElementById("forgotClientIdIframe").style.width = document.body.clientWidth + 'px';
-        document.getElementById("forgotClientIdIframe").style.height = document.body.clientHeight + 'px';
+        document.getElementById(config.iframeId).style.width = "100%";
+        document.getElementById(config.iframeId).style.height = "100%";
     }
 
     function fnIsValidStyleSheetAddress(styleHref) {
@@ -26,12 +28,12 @@
                 iframe.contentWindow.postMessage({
                     "key": "injectOverriddenStyleSheet",
                     "value": styleHref
-                }, config.homePageUrl)
+                }, config.homePageUrl);
             }
         }
     }
 
-    function fnInitial() {
+    function fnInit() {
         fnMonitorHash();
     }
 
@@ -41,14 +43,10 @@
         }
     }
 
-    window.onresize = function() {
-        fnSetIframeSize();
-    }
-
     window.onmessage = function(e) {
         e = e || event;
         if (e.data.key === 'closePopup') {
-            document.getElementById("forgotClientIdIframe").parentNode.removeChild(document.getElementById("forgotClientIdIframe"));
+            document.getElementById(config.iframeId).parentNode.removeChild(document.getElementById(config.iframeId));
             window.location.hash = '';
         }
     }
@@ -66,10 +64,10 @@
 
         template: function() {
             var iframe = document.createElement("iframe");
-            iframe.id = 'forgotClientIdIframe';
+            iframe.id = config.iframeId;
             iframe.setAttribute("scrolling", "no");
             iframe.setAttribute("frameBorder", "no");
-            iframe.src = config.homePageUrl + "?referDomain=" + location.href;
+            iframe.src = config.homePageUrl + "?referDomain=" + encodeURI(location.href.split(/\?|#/)[0]) + "&userAgent=" + config.userAgent;
             fnPostOverriddenStyleAddressMessage(config.overriddenStyleUrl, iframe);
             return iframe;
         },
@@ -80,5 +78,5 @@
     }
 
     window.forgotClientIdPopup = forgotClientId.popup;
-    fnInitial();
+    fnInit();
 })();

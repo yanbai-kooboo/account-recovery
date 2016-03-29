@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/bootstrap_v3.3.6.css">
     <link rel="stylesheet" href="stylesheets/forgotClientId.css">
 </head>
@@ -16,7 +17,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-1.12.2.js"></script>
     <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
     <script>
     // var rect = document.querySelector('.modal-content').getBoundingClientRect();
@@ -33,13 +34,15 @@
         var config = {
             forgotClientIdPage: "http://forgotclientid.pinnacle.com/retrieveClientId.html",
             // checkYourEmailPage: "@Url.FrontUrl().PageUrl("check-your-email")",
-            referDomain: "http://hostingpage.com/"
+            referDomain: "http://hostingpage.com/",
+            userAgent:"desktop"
         }
 
+        console.dir(config);
         function fnLoadPage(pageUrl) {
             $(".modal-content").html("");
             $(".loading").show();
-            $(".modal-content").load(pageUrl + "?referDomain=" + config.referDomain, function () {
+            $(".modal-content").load(pageUrl + "?referDomain=" + config.referDomain + "&userAgent=" + config.userAgent, function () {
                 $(".loading").hide();
             });
         }
@@ -73,10 +76,9 @@
 
         fnLoadPage(config.forgotClientIdPage);
         $("#forgotClientIdPopup").modal();
-
-        $("#forgotClientIdPopup").on("hide.bs.modal", function (e) {
+        $("#forgotClientIdPopup").on("hide.bs.modal", function(e) {
             parent.postMessage({ "key": "closePopup" }, config.referDomain);
-        })
+        });
     })($, window);
     </script>
 </body>
