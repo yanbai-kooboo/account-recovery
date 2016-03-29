@@ -8,12 +8,14 @@ body {
 }
 
 .modal-dialog {
-  width: 320px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .modal-content {
-  border-radius: 0px;
-  width: 320px;
+  width: 100%;
+  height: 100%;
   background-color: #1e2738;
 }
 
@@ -39,6 +41,10 @@ body {
 .modal-title {
   color: #fff;
   font-weight: 700;
+}
+
+.modal-footer {
+  text-align: left;
 }
 
 .modal-body a:hover,
@@ -72,13 +78,15 @@ body {
 }
 
 .modal-footer {
-  text-align: left;
   padding-left: 30px;
   font-size: 13px;
   background-color: #293243;
   color: #686f82;
   border-top: none;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .modal-footer span {
