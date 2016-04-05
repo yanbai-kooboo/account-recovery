@@ -41,12 +41,7 @@ body {
   font-weight: 700;
 }
 
-.modal-body a:hover,
-.modal-body a:visited,
-.modal-body a,
-.modal-footer a:hover,
-.modal-footer a:visited,
-.modal-footer a {
+.modal-content a {
   display: block;
   color: #9298a6;
   text-decoration: underline;
@@ -62,9 +57,8 @@ body {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
-  font-size: 13px;
+  font-size: 14px;
   color: #686f82;
-  font-weight: 700;
 }
 
 .modal-body p {
@@ -74,11 +68,11 @@ body {
 .modal-footer {
   text-align: left;
   padding-left: 30px;
-  font-size: 13px;
+  font-size: 14px;
   background-color: #293243;
   color: #686f82;
   border-top: none;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .modal-footer span {
@@ -89,11 +83,17 @@ body {
   margin-bottom: 20px;
 }
 
+.form-group label {
+  font-weight: 400;
+}
+
 .form-control {
   height: 40px;
   background-color: #0b1423;
   border-color: #3d4657;
   border-radius: 0;
+  font-size: 14px;
+  color: #9298a6;
 }
 
 .form-control:focus {
@@ -108,18 +108,19 @@ body {
 .modal-body .btn {
   padding-top: 8px;
   padding-bottom: 8px;
-  background-color: #2fa73b;
+  background-color: #30a73b;
   border-radius: 0;
-  border-color: #2fa73b;
+  border-color: #30a73b;
   color: #fff;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
   text-decoration: none;
 }
 
 .modal-body .btn:hover,
 .modal-body .btn:focus {
-  background-color: #2fa73b;
+  outline-color: #32af3d;
+  background-color: #32af3d;
   color: #fff;
   text-decoration: none;
 }
@@ -135,6 +136,17 @@ body {
   margin-top: 16px;
 }
 
+.modal-body a:hover,
+.modal-body a:focus,
+.modal-footer a:hover,
+.modal-footer a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/*
+forgot email address
+*/
 .modal-body .help-block {
   margin-bottom: 62px;
 }
