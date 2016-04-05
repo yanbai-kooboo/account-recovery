@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap_v3.3.6.css">
+    <link rel="stylesheet" href="stylesheets/forgotClientId.css">
+    <link rel="stylesheet" href="stylesheets/checkEmail.css">
+</head>
+
+<body>
+    <a href="javascript:popup()" >click me</a>
+    <div id="forgotClientIdPopup" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-ok check-ok"  aria-hidden="true"></span>
+                    <h4 class="modal-title">Check your email</h4>
+                </div>
+                <div class="modal-body">
+                    <p href="" class="help-block">We've sent an email to<span class="user-email">[user-submitted eamil address]</span>
+                    </p>
+                    <p href="" class="help-block">If you do not recieve it please check your junk mail filter or contact<a href="">Customer Services.</a>
+                    </p>
+                    <button type="button" class="btn btn-info btn-lg btn-block ">Done</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</body>
+<script type="text/javascript" src="javascripts/jquery.js"></script>
+<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+<script>
+    var popup = function(){
+        $('#forgotClientIdPopup').modal();
+    }
+</script>
+</html>
